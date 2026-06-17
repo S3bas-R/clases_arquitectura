@@ -16,8 +16,9 @@ class Subject (
     val id: Long = 0L,
     val name: String = "",
     val code: String? = "",
+    val description: String? = "",
 
     @ManyToOne(fetch = FetchType.LAZY)
-    val professor: Professor,
+    var professor: Professor? = null,
 
 )

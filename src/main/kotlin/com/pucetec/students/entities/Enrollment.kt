@@ -8,9 +8,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
-import org.hibernate.query.common.FetchClauseType
 import java.time.LocalDateTime
-import java.time.OffsetDateTime
 
 @Entity
 @Table(name = "enrollments")
@@ -18,7 +16,7 @@ class Enrollment (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0L,
-    val status: String = "",
+    val status: String = "ACTIVE",
 
     @Column (name= "created_at")
     val createdAt: LocalDateTime = LocalDateTime.now(),
@@ -27,7 +25,6 @@ class Enrollment (
     val subject: Subject,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    val
+    val student: Student
 
-
-    )
+)

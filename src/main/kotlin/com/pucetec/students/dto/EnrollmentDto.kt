@@ -9,5 +9,4 @@ data class EnrollmentResponse(
     val id: Long,
     val createdAt: String,
     val status: String,
-    val
 )

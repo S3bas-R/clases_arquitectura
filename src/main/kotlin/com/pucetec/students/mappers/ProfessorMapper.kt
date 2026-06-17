@@ -1,17 +1,15 @@
 package com.pucetec.students.mappers
 
-import com.pucetec.students.dto.StudentRequest
-import com.pucetec.students.dto.StudentResponse
-import com.pucetec.students.entities.Student
+import com.pucetec.students.dto.ProfessorRequest
+import com.pucetec.students.dto.ProfessorResponse
+import com.pucetec.students.entities.Professor
 
-// Mapea un request a entity
-fun StudentRequest.toEntity() = Student(
+fun ProfessorRequest.toEntity() = Professor(
     name = this.name,
     email = this.email,
 )
 
-// Mapea un entity a un response
-fun Student.toResponse() = StudentResponse(
+fun Professor.toResponse() = ProfessorResponse(
     id = this.id,
     name = this.name,
     email = this.email,

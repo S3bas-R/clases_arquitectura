@@ -8,7 +8,7 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "students")
+@Table(name = "professors")
 class Professor (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
