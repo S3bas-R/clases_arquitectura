@@ -11,40 +11,52 @@ import com.pucetec.students.exceptions.ProfessorNotFound
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
-// @Service: Dice que esta clase es el cerebro para controlar a los profesores.
+/**
+ * @Service: Dice que esta clase es el cerebro para controlar a los profesores del sistema.
+ */
 @Service
 class ProfessorService(
+    // Inyectamos el repositorio del profesor para interactuar con la base de datos.
     private val professorRepository: ProfessorRepository
 ) {
     private val logger = LoggerFactory.getLogger(ProfessorService::class.java)
 
     /**
      * Crea un profesor nuevo en la base de datos.
+     * 
+     * @param request Datos del profesor a registrar.
+     * @return El profesor creado y formateado para la respuesta.
+     * @throws BlankNameException Si el nombre del profesor está vacío.
      */
     fun createProfessor(request: ProfessorRequest): ProfessorResponse {
-        logger.info("Guardando nuevo profesor: ${request.name}")
+        logger.info("Iniciando la creación del profesor: ${request.name}")
 
         // Regla: El nombre del profesor no puede estar vacío.
         if (request.name.isBlank()) {
-            logger.warn("El nombre del profesor está en blanco")
+            logger.warn("Intento de crear profesor con nombre en blanco")
             throw BlankNameException()
         }
 
         val professor = request.toEntity()
         val saved = professorRepository.save(professor)
+        logger.info("Profesor creado exitosamente con ID: ${saved.id}")
         return saved.toResponse()
     }
 
     /**
-     * Devuelve todos los profesores de la base de datos.
+     * Devuelve todos los profesores registrados.
      */
     fun getAllProfessors(): List<ProfessorResponse> {
-        logger.info("Obteniendo todos los profesores")
+        logger.info("Obteniendo la lista de todos los profesores")
         return professorRepository.findAll().map { it.toResponse() }
     }
 
     /**
      * Busca un profesor usando su identificador único.
+     * 
+     * @param id Identificador único del profesor.
+     * @return El profesor encontrado.
+     * @throws ProfessorNotFound Si no se encuentra el profesor.
      */
     fun getProfessorById(id: Long): ProfessorResponse {
         logger.info("Buscando profesor con ID: $id")
@@ -56,7 +68,13 @@ class ProfessorService(
     }
 
     /**
-     * Actualiza el nombre y/o correo de un profesor.
+     * Actualiza los datos de un profesor existente.
+     * 
+     * @param id Identificador único del profesor a actualizar.
+     * @param request Nuevos datos del profesor.
+     * @return El profesor actualizado.
+     * @throws ProfessorNotFound Si no se encuentra el profesor.
+     * @throws BlankNameException Si el nuevo nombre proporcionado está en blanco.
      */
     fun updateProfessor(id: Long, request: ProfessorRequest): ProfessorResponse {
         logger.info("Actualizando profesor con ID: $id")
@@ -67,24 +85,24 @@ class ProfessorService(
 
         // Regla: El nombre no puede estar en blanco.
         if (request.name.isBlank()) {
-            logger.warn("El nombre proporcionado para la actualización está en blanco")
+            logger.warn("Intento de actualización con nombre en blanco para profesor con ID: $id")
             throw BlankNameException()
         }
 
-        // Creamos una nueva entidad con los datos actualizados y la misma clave primaria.
-        val updatedProfessor = Professor(
-            id = professor.id,
-            name = request.name,
-            email = request.email,
-            subjects = professor.subjects
-        )
+        // Modificamos directamente las propiedades de la entidad gestionada por JPA/Hibernate.
+        professor.name = request.name
+        professor.email = request.email
 
-        val saved = professorRepository.save(updatedProfessor)
+        val saved = professorRepository.save(professor)
+        logger.info("Profesor con ID: $id actualizado exitosamente")
         return saved.toResponse()
     }
 
     /**
      * Elimina a un profesor del sistema.
+     * 
+     * @param id Identificador único del profesor.
+     * @throws ProfessorNotFound Si el profesor no existe.
      */
     fun deleteProfessor(id: Long) {
         logger.info("Eliminando profesor con ID: $id")

@@ -13,8 +13,8 @@ class Professor (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0L,
-    val name: String = "",
-    val email: String? = null,
+    var name: String = "",
+    var email: String? = null,
 
     @OneToMany(mappedBy = "professor")
     val subjects: MutableList<Subject> = mutableListOf(),

@@ -14,9 +14,9 @@ class Subject (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0L,
-    val name: String = "",
-    val code: String? = "",
-    val description: String? = "",
+    var name: String = "",
+    var code: String? = "",
+    var description: String? = "",
 
     @ManyToOne(fetch = FetchType.LAZY)
     var professor: Professor? = null,

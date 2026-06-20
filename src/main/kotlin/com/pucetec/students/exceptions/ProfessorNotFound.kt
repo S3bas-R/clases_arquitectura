@@ -1,6 +1,7 @@
 package com.pucetec.students.exceptions
 
 /**
- * ProfessorNotFound: Grito de error cuando buscamos un profesor y no existe.
+ * ProfessorNotFound: Excepción lanzada cuando un profesor no se encuentra en el sistema.
+ * Debe llamarse exactamente así según la especificación del deber.md.
  */
 class ProfessorNotFound : RuntimeException("Profesor no encontrado")

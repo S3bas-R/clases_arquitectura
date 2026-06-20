@@ -16,7 +16,7 @@ class Enrollment (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0L,
-    val status: String = "ACTIVE",
+    var status: String = "ACTIVE",
 
     @Column (name= "created_at")
     val createdAt: LocalDateTime = LocalDateTime.now(),
