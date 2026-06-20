@@ -49,4 +49,12 @@ class GlobalExceptionHandler {
         // HttpStatus.BAD_REQUEST: El código de internet 400 (Petición incorrecta).
         return ResponseEntity(ex.message, HttpStatus.BAD_REQUEST)
     }
+
+    /**
+     * Atiende cuando no se encuentra una inscripción.
+     */
+    @ExceptionHandler(EnrollmentNotFound::class)
+    fun handleEnrollmentNotFound(ex: EnrollmentNotFound): ResponseEntity<String> {
+        return ResponseEntity(ex.message, HttpStatus.NOT_FOUND)
+    }
 }

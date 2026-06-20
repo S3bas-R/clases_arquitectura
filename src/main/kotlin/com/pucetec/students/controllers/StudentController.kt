@@ -1,59 +1,59 @@
 package com.pucetec.students.controllers
 
-// Importamos lo que necesitamos de otras carpetas
 import com.pucetec.students.dto.StudentRequest
 import com.pucetec.students.dto.StudentResponse
 import com.pucetec.students.services.StudentService
 import org.slf4j.LoggerFactory
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
-// @RestController: Sticker que dice que esta clase es el "Mesero" de la API.
+// @RestController: Dice que esta clase maneja las peticiones web (HTTP) de los estudiantes.
 @RestController
-// @RequestMapping: Dice que todas las órdenes para esta clase empiezan con "/api/students".
 @RequestMapping("/api/students")
-class StudentController (
-    // Recibe el "Cerebro" (Service) para mandarle los pedidos de cocina.
-    val studentService: StudentService
-){
-    // Creamos el diario (logger) para anotar qué órdenes van llegando.
-    val logger = LoggerFactory.getLogger(javaClass)
+class StudentController(
+    private val studentService: StudentService
+) {
+    private val logger = LoggerFactory.getLogger(StudentController::class.java)
 
-    // @PostMapping: Se activa cuando el cliente quiere CREAR (enviar datos nuevos).
+    // @PostMapping: Se activa al enviar una petición POST para crear un estudiante.
+    // @ResponseStatus(HttpStatus.CREATED): Indica que responde con el código 201 (Creado exitosamente).
     @PostMapping
-    fun createStudent(
-        // @RequestBody: Indica que los datos vienen en el "cuerpo" del paquete (Request).
-        @RequestBody request: StudentRequest
-    ) : StudentResponse {
-        logger.info("Creating student ${request.name}")
-        // Le pasa el pedido al Service y devuelve lo que el Service responda.
+    @ResponseStatus(HttpStatus.CREATED)
+    fun createStudent(@RequestBody request: StudentRequest): StudentResponse {
+        logger.info("Recibida petición para crear un estudiante: ${request.name}")
         return studentService.createStudent(request)
     }
 
-    // @GetMapping: Se activa cuando el cliente quiere PEDIR (ver datos existentes).
+    // @GetMapping: Se activa al enviar una petición GET para obtener todos los estudiantes.
     @GetMapping
-    fun getAllStudents() : List<StudentResponse> {
-        logger.info("Getting all students")
-        // Pide la lista al Service y la entrega al cliente.
+    fun getAllStudents(): List<StudentResponse> {
+        logger.info("Recibida petición para listar todos los estudiantes")
         return studentService.getAllStudents()
     }
 
-    // @PutMapping: Se activa cuando el cliente quiere ACTUALIZAR (cambiar algo que ya existe).
-    // "/{id}": Significa que en la dirección vendrá el número del estudiante (ej: /api/students/5).
-    @PutMapping("/{id}")
-    fun updateStudent(
-        // @PathVariable: Saca el número de ID que viene en la dirección URL.
-        @PathVariable id: Long,
-        // Recibe los nuevos datos en el cuerpo del mensaje.
-        @RequestBody student: StudentRequest
-    ): StudentResponse{
-        // Le dice al Service: "Actualiza al estudiante número X con estos datos".
-        return studentService.updateStudent(id, student)
+    // @GetMapping("/{id}"): Se activa al enviar una petición GET con el identificador en la URL (ej: /api/students/1).
+    @GetMapping("/{id}")
+    fun getStudentById(@PathVariable id: Long): StudentResponse {
+        logger.info("Recibida petición para obtener el estudiante con ID: $id")
+        return studentService.getStudentById(id)
     }
 
-    // @DeleteMapping: Se activa cuando el cliente quiere BORRAR.
+    // @PutMapping("/{id}"): Se activa al enviar una petición PUT para actualizar datos de un estudiante.
+    @PutMapping("/{id}")
+    fun updateStudent(
+        @PathVariable id: Long,
+        @RequestBody request: StudentRequest
+    ): StudentResponse {
+        logger.info("Recibida petición para actualizar el estudiante con ID: $id")
+        return studentService.updateStudent(id, request)
+    }
+
+    // @DeleteMapping("/{id}"): Se activa al enviar una petición DELETE para borrar a un estudiante.
+    // @ResponseStatus(HttpStatus.NO_CONTENT): Indica que responde con el código 204 (Sin contenido, borrado con éxito).
     @DeleteMapping("/{id}")
-    fun deleteStudent(@PathVariable id: Long){
-        // Le dice al Service que borre al estudiante con ese número.
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteStudent(@PathVariable id: Long) {
+        logger.info("Recibida petición para eliminar el estudiante con ID: $id")
         studentService.deleteStudent(id)
     }
 }

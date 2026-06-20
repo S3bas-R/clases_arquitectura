@@ -11,3 +11,6 @@ import org.springframework.stereotype.Repository
 // JpaRepository<Student, Long>: Al heredar de aquí, este bibliotecario aprende automáticamente
 // a Buscar, Guardar, Borrar y Actualizar 'Students' usando su ID (que es de tipo Long).
 interface StudentsRepository : JpaRepository<Student, Long>
+
+// Alias para usar de manera singular el nombre del repositorio en servicios y tests.
+typealias StudentRepository = StudentsRepository

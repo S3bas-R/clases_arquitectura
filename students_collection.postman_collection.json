@@ -1,0 +1,514 @@
+{
+  "info": {
+    "_postman_id": "8b51d120-cb9a-4131-893c-23746a1610e2",
+    "name": "Students API - CRUD Completo",
+    "description": "Colección de Postman con los 20 endpoints correspondientes a la API REST del proyecto de gestión de estudiantes, profesores, materias e inscripciones.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Crear Estudiante",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ana Torres\",\n  \"email\": \"ana@puce.edu.ec\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8787/api/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "students"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Todos los Estudiantes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "students"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Estudiante por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/students/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "students",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Estudiante",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ana Torres Ruiz\",\n  \"email\": \"ana.torres@puce.edu.ec\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8787/api/students/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "students",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar Estudiante",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/students/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "students",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Professors",
+      "item": [
+        {
+          "name": "Crear Profesor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dr. García\",\n  \"email\": \"garcia@puce.edu.ec\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8787/api/professors",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "professors"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Todos los Profesores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/professors",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "professors"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Profesor por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/professors/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "professors",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Profesor",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dr. García Enríquez\",\n  \"email\": \"g.enriquez@puce.edu.ec\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8787/api/professors/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "professors",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar Profesor",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/professors/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "professors",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Subjects",
+      "item": [
+        {
+          "name": "Crear Materia",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Arquitectura Empresarial\",\n  \"code\": \"AE-101\",\n  \"description\": \"Materia sobre modelado de procesos empresariales\",\n  \"professorId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8787/api/subjects",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "subjects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Todas las Materias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/subjects",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "subjects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Materia por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/subjects/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "subjects",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Materia",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Arquitectura Empresarial Avanzada\",\n  \"code\": \"AE-102\",\n  \"description\": \"Materia avanzada sobre patrones de arquitectura\",\n  \"professorId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8787/api/subjects/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "subjects",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar Materia",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/subjects/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "subjects",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Enrollments",
+      "item": [
+        {
+          "name": "Crear Inscripción",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"studentId\": 1,\n  \"subjectId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8787/api/enrollments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "enrollments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Todas las Inscripciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/enrollments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "enrollments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Inscripción por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/enrollments/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "enrollments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Estado de Inscripción",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"APROBADO\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8787/api/enrollments/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "enrollments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar Inscripción",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8787/api/enrollments/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8787",
+              "path": [
+                "api",
+                "enrollments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
